@@ -6,7 +6,7 @@ const Navbar = () => {
   const [navOpened, setNavOpened] = useState(false);
 
   return (
-    <nav className="my-4">
+    <nav className="my-6 mb-12">
       <div className="flex justify-between items-center gap-4 ">
         <div className="lg:hidden">
           <button onClick={() => setNavOpened(!navOpened)}>
