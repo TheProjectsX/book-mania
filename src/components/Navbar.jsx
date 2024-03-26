@@ -21,9 +21,15 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:flex gap-2 *:text-[#150B2BB3] *:px-3 *:py-2 *:rounded-md *:cursor-pointer *:border-2 *:border-transparent">
-          <NavLink className="hover:text-green-500">Home</NavLink>
-          <NavLink className="hover:text-green-500">Listed Books</NavLink>
-          <NavLink className="hover:text-green-500">Pages to Read</NavLink>
+          <NavLink to={"/"} className="hover:text-green-500">
+            Home
+          </NavLink>
+          <NavLink to={"/listed-books"} className="hover:text-green-500">
+            Listed Books
+          </NavLink>
+          <NavLink to={"/sd"} className="hover:text-green-500">
+            Pages to Read
+          </NavLink>
         </div>
 
         <div className="hidden md:flex gap-3 items-center">
@@ -45,8 +51,12 @@ const Navbar = () => {
           <NavLink to={"/"} className="hover:text-green-500">
             Home
           </NavLink>
-          <NavLink className="hover:text-green-500">Listed Books</NavLink>
-          <NavLink className="hover:text-green-500">Pages to Read</NavLink>
+          <NavLink to={"/listed-books"} className="hover:text-green-500">
+            Listed Books
+          </NavLink>
+          <NavLink to={"/sd"} className="hover:text-green-500">
+            Pages to Read
+          </NavLink>
 
           <div className="md:hidden flex flex-col gap-2 items-center">
             <button className="py-2 px-3.5 rounded-md bg-[#23BE0A] text-white font-semibold">

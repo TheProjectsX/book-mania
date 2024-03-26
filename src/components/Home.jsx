@@ -12,9 +12,11 @@ const Home = () => {
             Books to Freshen
             <br /> up your Bookshelf
           </h3>
-          <button className="py-2.5 px-4 rounded-md bg-[#23BE0A] text-white font-semibold">
-            View The List
-          </button>
+          <Link to={"/listed-books"}>
+            <button className="py-2.5 px-4 rounded-md bg-[#23BE0A] text-white font-semibold">
+              View The List
+            </button>
+          </Link>
         </div>
         <div>
           <img src="/images/book_1.jpg" alt="Book" className="w-40" />
