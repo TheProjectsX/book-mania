@@ -11,3 +11,12 @@
 .font-playfair {
   font-family: "Playfair Display", serif;
 }
+
+a.active {
+  border-color: #23BE0A;
+  color: #23BE0A;
+}
+
+.mobileNav a.active {
+  text-decoration: underline;
+}
