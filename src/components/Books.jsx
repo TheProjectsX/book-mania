@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import BooksContext from "../utils/context";
 
 const Books = () => {
   const params = useParams();
@@ -6,9 +8,12 @@ const Books = () => {
   const booksData = useLoaderData();
   const book = booksData.find((book) => book.bookId === bookId);
 
+  const context = useContext(BooksContext);
+  const { addToReadBooks, addToWishList } = context;
+
   return (
     <div className="mb-16">
-      <h3 className="mb-10 text-4xl text-center font-bold font-playfair">
+      <h3 className="mb-10 p-6 rounded-lg bg-[#1313130D] text-3xl text-center font-bold font-playfair">
         Book Details
       </h3>
 
@@ -49,31 +54,39 @@ const Books = () => {
             </div>
 
             <table className="mb-4">
-              <tr>
-                <td className="pb-1 pr-10 text-[#131313B3]">
-                  Number of Pages:
-                </td>
-                <td className="font-semibold">{book["totalPages"]}</td>
-              </tr>
-              <tr>
-                <td className="pb-1 text-[#131313B3]">Publisher:</td>
-                <td className="font-semibold">{book["publisher"]}</td>
-              </tr>
-              <tr>
-                <td className="pb-1 text-[#131313B3]">Year of Publishing:</td>
-                <td className="font-semibold">{book["yearOfPublishing"]}</td>
-              </tr>
-              <tr>
-                <td className="pb-1 text-[#131313B3]">Rating:</td>
-                <td className="font-semibold">{book["rating"]}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td className="pb-1 pr-10 text-[#131313B3]">
+                    Number of Pages:
+                  </td>
+                  <td className="font-semibold">{book["totalPages"]}</td>
+                </tr>
+                <tr>
+                  <td className="pb-1 text-[#131313B3]">Publisher:</td>
+                  <td className="font-semibold">{book["publisher"]}</td>
+                </tr>
+                <tr>
+                  <td className="pb-1 text-[#131313B3]">Year of Publishing:</td>
+                  <td className="font-semibold">{book["yearOfPublishing"]}</td>
+                </tr>
+                <tr>
+                  <td className="pb-1 text-[#131313B3]">Rating:</td>
+                  <td className="font-semibold">{book["rating"]}</td>
+                </tr>
+              </tbody>
             </table>
 
             <div className="space-x-4">
-              <button className="p-5 font-semibold px-4 py-2.5 border-2 border-[#1313134D] hover:border-[#50B1C9] rounded-lg hover:text-white hover:bg-[#50B1C9]">
+              <button
+                className="p-5 font-semibold px-4 py-2.5 border-2 border-[#1313134D] hover:border-[#50B1C9] rounded-lg hover:text-white hover:bg-[#50B1C9]"
+                onClick={() => addToReadBooks(book)}
+              >
                 Read
               </button>
-              <button className="p-5 font-semibold px-4 py-2.5 border-2 border-[#50B1C9] hover:border-[#1313134D] rounded-lg text-white hover:text-black bg-[#50B1C9] hover:bg-white">
+              <button
+                className="p-5 font-semibold px-4 py-2.5 border-2 border-[#50B1C9] hover:border-[#1313134D] rounded-lg text-white hover:text-black bg-[#50B1C9] hover:bg-white"
+                onClick={() => addToWishList(book)}
+              >
                 Wishlist
               </button>
             </div>
