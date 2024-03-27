@@ -40,7 +40,7 @@ const Home = () => {
                 <img
                   src={"/images/" + book["image"]}
                   alt={book["bookName"] + " - Image"}
-                  className="w-20"
+                  className="w-20 h-[124px]"
                 />
               </div>
 

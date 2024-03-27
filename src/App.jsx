@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [readBooksList, setReadBooksList] = useState([]);
   const [wishList, setWishList] = useState([]);
+  const [timelineData, setTimelineData] = useState([]);
 
   // Add to Read Books
   const addToReadBooks = (book) => {
@@ -31,6 +32,18 @@ function App() {
 
     localStorage.setItem("wishList", JSON.stringify(wishListNew));
     localStorage.setItem("readBooksList", JSON.stringify(readBooksNew));
+
+    const timeline = {
+      bookId: book["bookId"],
+      bookName: book["bookName"],
+      category: book["category"],
+      totalPages: book["totalPages"],
+      type: "readList",
+      time: new Date().toJSON(),
+    };
+    const timelineDataNew = [...timelineData, timeline];
+    setTimelineData(timelineDataNew);
+    localStorage.setItem("timelineData", JSON.stringify(timelineDataNew));
   };
 
   // Add to Wish List
@@ -47,11 +60,22 @@ function App() {
       return;
     }
 
-    const wishListNew = [...readBooksList, book];
+    const wishListNew = [...wishList, book];
     setWishList(wishListNew);
-    toast.success("Added to Read Wish List");
+    toast.success("Added to Wish List");
 
     localStorage.setItem("wishList", JSON.stringify(wishListNew));
+    const timeline = {
+      bookId: book["bookId"],
+      bookName: book["bookName"],
+      category: book["category"],
+      type: "wishList",
+      time: new Date().toJSON(),
+    };
+    const timelineDataNew = [...timelineData, timeline];
+    setTimelineData(timelineDataNew);
+
+    localStorage.setItem("timelineData", JSON.stringify(timelineDataNew));
   };
 
   // Load Data from LocalStorage
@@ -81,7 +105,16 @@ function App() {
       />
       <Navbar />
       <BooksContext.Provider
-        value={{ readBooksList, addToReadBooks, wishList, addToWishList }}
+        value={{
+          readBooksList,
+          setReadBooksList,
+          addToReadBooks,
+          wishList,
+          setWishList,
+          addToWishList,
+          timelineData,
+          setTimelineData,
+        }}
       >
         <Outlet />
       </BooksContext.Provider>

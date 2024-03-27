@@ -27,8 +27,11 @@ const Navbar = () => {
           <NavLink to={"/listed-books"} className="hover:text-green-500">
             Listed Books
           </NavLink>
-          <NavLink to={"/sd"} className="hover:text-green-500">
+          <NavLink to={"/read-pages"} className="hover:text-green-500">
             Pages to Read
+          </NavLink>
+          <NavLink to={"/timeline"} className="hover:text-green-500">
+            Timeline
           </NavLink>
         </div>
 
@@ -54,8 +57,11 @@ const Navbar = () => {
           <NavLink to={"/listed-books"} className="hover:text-green-500">
             Listed Books
           </NavLink>
-          <NavLink to={"/sd"} className="hover:text-green-500">
+          <NavLink to={"/read-pages"} className="hover:text-green-500">
             Pages to Read
+          </NavLink>
+          <NavLink to={"/timeline"} className="hover:text-green-500">
+            timeline
           </NavLink>
 
           <div className="md:hidden flex flex-col gap-2 items-center">

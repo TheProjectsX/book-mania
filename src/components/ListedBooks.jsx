@@ -12,12 +12,35 @@ import BooksContext from "../utils/context";
 
 const ListedBooks = () => {
   const context = useContext(BooksContext);
-  const { readBooksList, wishList } = context;
+  const { readBooksList, setReadBooksList, wishList, setWishList } = context;
   const [sortBy, setSortBy] = useState("rating");
 
   const [filteredReadBooks, setFilteredReadBooks] = useState([]);
   const [filteredWishList, setFilteredWishList] = useState([]);
 
+  // Load Data from LocalStorage
+  useEffect(() => {
+    if (readBooksList.length !== 0 || wishList.length !== 0) {
+      return;
+    }
+
+    const oldReadBooks =
+      JSON.parse(localStorage.getItem("readBooksList")) ?? [];
+    const oldWishList = JSON.parse(localStorage.getItem("wishList")) ?? [];
+
+    setReadBooksList(oldReadBooks);
+    setWishList(oldWishList);
+  }, []);
+
+  useEffect(() => {
+    setFilteredReadBooks(
+      [...readBooksList].sort((a, b) => b[sortBy] - a[sortBy])
+    );
+
+    setFilteredWishList([...wishList].sort((a, b) => b[sortBy] - a[sortBy]));
+  }, [readBooksList, wishList]);
+
+  // Sort Books by selected
   useEffect(() => {
     setFilteredReadBooks(
       [...readBooksList].sort((a, b) => b[sortBy] - a[sortBy])
