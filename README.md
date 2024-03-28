@@ -1,8 +1,20 @@
-# React + Vite
+# Book Mania
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Get the Book you like and dive into Adventure!
 
-Currently, two official plugins are available:
+### Live Link:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://book-mania.surge.sh/](https://book-mania.surge.sh/)
+
+### Features:
+
+- Find the Most Famous Books
+- Add books to Read List and Wish List
+- Check your Added List with Sorting Feature
+- Get Clear overview of your Read Books from Chart
+- Get your Up-To-Date Timeline Information
+- Search Books By
+  - Book's Name
+  - Author's Name
+  - Category
+  - Tags
