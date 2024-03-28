@@ -16,7 +16,7 @@ const Navbar = () => {
 
         <div>
           <button className="text-xl sm:text-2xl font-bold">
-            <a>Book Vibe</a>
+            <a>Book Mania</a>
           </button>
         </div>
 
