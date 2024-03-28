@@ -6,7 +6,7 @@ const Navbar = () => {
   const [navOpened, setNavOpened] = useState(false);
 
   return (
-    <nav className="my-6 mb-12">
+    <nav className="my-6 mb-6 sm:mb-10">
       <div className="flex justify-between items-center gap-4 ">
         <div className="lg:hidden">
           <button onClick={() => setNavOpened(!navOpened)}>
@@ -32,6 +32,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink to={"/timeline"} className="hover:text-green-500">
             Timeline
+          </NavLink>
+          <NavLink to={"/search"} className="hover:text-green-500">
+            Search
           </NavLink>
         </div>
 
@@ -61,7 +64,10 @@ const Navbar = () => {
             Pages to Read
           </NavLink>
           <NavLink to={"/timeline"} className="hover:text-green-500">
-            timeline
+            Timeline
+          </NavLink>
+          <NavLink to={"/search"} className="hover:text-green-500">
+            Search
           </NavLink>
 
           <div className="md:hidden flex flex-col gap-2 items-center">

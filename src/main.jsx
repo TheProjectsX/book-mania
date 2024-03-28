@@ -8,11 +8,14 @@ import Books from "./components/Books.jsx";
 import ListedBooks from "./components/ListedBooks.jsx";
 import BookPagesChart from "./components/BookPagesChart.jsx";
 import ReadingTimeline from "./components/ReadingTimeline.jsx";
+import SearchBooks from "./components/SearchBooks.jsx";
+import NotFound from "./components/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
@@ -35,6 +38,11 @@ const router = createBrowserRouter([
       {
         path: "/timeline",
         element: <ReadingTimeline />,
+      },
+      {
+        path: "/search",
+        element: <SearchBooks />,
+        loader: () => fetch("/data/books-data.json"),
       },
     ],
   },

@@ -66,7 +66,7 @@ const ListedBooks = () => {
             { value: "yearOfPublishing", label: "Published Year" },
           ]}
           onChange={(e) => setSortBy(e.value)}
-          value={"rating"}
+          value={sortBy}
           placeholder="Select an option"
         />
       </label>
@@ -79,16 +79,28 @@ const ListedBooks = () => {
 
         <TabPanel>
           <div className="space-y-4">
-            {filteredReadBooks.map((book) => (
-              <BookCard book={book} key={book["bookId"]} />
-            ))}
+            {filteredReadBooks.length > 0 ? (
+              filteredReadBooks.map((book) => (
+                <BookCard book={book} key={book["bookId"]} />
+              ))
+            ) : (
+              <h4 className="text-xl italic my-10">
+                No Listed Books Available!
+              </h4>
+            )}
           </div>
         </TabPanel>
         <TabPanel>
           <div className="space-y-4">
-            {filteredWishList.map((book) => (
-              <BookCard book={book} key={book["bookId"]} />
-            ))}
+            {filteredWishList.length > 0 ? (
+              filteredWishList.map((book) => (
+                <BookCard book={book} key={book["bookId"]} />
+              ))
+            ) : (
+              <h4 className="text-xl italic my-10">
+                No Wish List Books Available!
+              </h4>
+            )}
           </div>
         </TabPanel>
       </Tabs>

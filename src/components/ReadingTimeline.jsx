@@ -20,7 +20,7 @@ const ReadingTimeline = () => {
     const formattedYear = year.length === 4 ? year : `20${year}`;
 
     // Combining parts into desired format
-    const formattedDateTime = `${day}-${formattedMonth}-${formattedYear} ${hour}:${minutes} ${period}`;
+    const formattedDateTime = `${day}/${formattedMonth}/${formattedYear} ${hour}:${minutes} ${period}`;
     return formattedDateTime;
   };
 
@@ -31,7 +31,7 @@ const ReadingTimeline = () => {
 
     const oldTimelineData =
       JSON.parse(localStorage.getItem("timelineData")) ?? [];
-    setTimelineData(oldTimelineData);
+    setTimelineData(oldTimelineData.reverse());
   }, []);
 
   return (
@@ -80,7 +80,7 @@ const ReadingTimeline = () => {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {idx + 1}
+                    {timelineData.length - idx}
                   </th>
                   <td className="px-6 py-4">{item["bookName"]}</td>
                   <td className="px-6 py-4">{item["totalPages"]}</td>

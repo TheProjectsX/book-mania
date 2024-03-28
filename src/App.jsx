@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import BooksContext from "./utils/context";
@@ -41,7 +41,7 @@ function App() {
       type: "readList",
       time: new Date().toJSON(),
     };
-    const timelineDataNew = [...timelineData, timeline];
+    const timelineDataNew = [...timelineData, timeline].reverse();
     setTimelineData(timelineDataNew);
     localStorage.setItem("timelineData", JSON.stringify(timelineDataNew));
   };
@@ -69,6 +69,7 @@ function App() {
       bookId: book["bookId"],
       bookName: book["bookName"],
       category: book["category"],
+      totalPages: book["totalPages"],
       type: "wishList",
       time: new Date().toJSON(),
     };
@@ -88,6 +89,16 @@ function App() {
     setWishList(oldWishList);
   }, []);
 
+  // Scroll to top
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [pathname]);
   return (
     <div className="font-work-sans max-w-[1100px] mx-auto px-5">
       <ToastContainer
