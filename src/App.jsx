@@ -3,12 +3,21 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import BooksContext from "./utils/context";
 import { useEffect, useState } from "react";
+import { pageTitles } from "./main";
 
 // React Toastify
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  // Change Page Titles
+  const location = useLocation();
+  useEffect(() => {
+    const path = location["pathname"].split("/")[1];
+    const title = pageTitles[path] ?? "Book Mania";
+    document.title = title;
+  }, [location]);
+
   const [readBooksList, setReadBooksList] = useState([]);
   const [wishList, setWishList] = useState([]);
   const [timelineData, setTimelineData] = useState([]);
